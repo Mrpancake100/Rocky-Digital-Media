@@ -82,7 +82,7 @@ bookingForm?.addEventListener("submit", (event) => {
   }
 
   const data = new FormData(bookingForm);
-  const selectedDays = data.getAll("day").join(", ");
+ const selectedDays = data.get("day");
 
   const summary = [
     "Thank for booking with Rocky’s Media! I be in contact in 24-48hrs with more info based on your preferred contact method! If you have any questions Feel free to shoot me a email at officialrockymedia@gmail.com",
