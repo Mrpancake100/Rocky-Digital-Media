@@ -6,7 +6,7 @@
     <title>Rocky's Media</title>
     <meta
       name="description"
-      content="Rocky's Media furry convention photography, booking, pricing, gallery, FAQ, and socials."
+      content="Rocky's Media furry convention photography, booking, pricing, handler requests, FAQ, and socials."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -20,7 +20,7 @@
         <a href="#home" class="tab active" data-tab-link="home">Home</a>
         <a href="#booking" class="tab" data-tab-link="booking">Booking</a>
         <a href="#pricing" class="tab" data-tab-link="pricing">Pricing</a>
-       <a href="#handler" class="tab" data-tab-link="handler">Handler Request</a>
+        <a href="#handler" class="tab" data-tab-link="handler">Handler Request</a>
         <a href="#faq" class="tab" data-tab-link="faq">FAQ</a>
         <a href="#socials" class="tab" data-tab-link="socials">Socials</a>
       </nav>
@@ -32,17 +32,18 @@
           <p class="eyebrow">Furry con photography • group photos • memories</p>
           <h1 id="home-title">ROCKY</h1>
           <p class="lede">
-            Clean, colorful con photography for fursuiters, handlers, makers, and friends who
-            want photos that feel bright, comfortable, and ready to share.
+            Wether, you’re booking a photo session, needing a handler, or just exploring.
+            We have everything you might need to make your next con a blast and memorable!
           </p>
+
           <div class="hero-actions">
             <a class="button primary" href="#booking" data-tab-link="booking">
               <span aria-hidden="true">▣</span>
               Book a shoot
             </a>
-            <a class="button secondary" href="#gallery" data-tab-link="gallery">
+            <a class="button secondary" href="#handler" data-tab-link="handler">
               <span aria-hidden="true">▧</span>
-              View gallery
+              Handler request
             </a>
           </div>
         </div>
@@ -79,8 +80,18 @@
             </label>
 
             <label>
-              Contact
-              <input name="contact" required placeholder="Discord, Telegram, or email" />
+              Preferred contact method
+              <select name="contactMethod" class="contact-method" required>
+                <option value="">Choose contact method</option>
+                <option>Email</option>
+                <option>Discord</option>
+                <option>Telegram</option>
+              </select>
+            </label>
+
+            <label>
+              Contact info
+              <input name="contact" class="contact-field" required placeholder="Choose a method first" />
             </label>
 
             <label>
@@ -91,22 +102,6 @@
                 required
                 placeholder="Example: AWU"
               />
-              <datalist id="conventions">
-                <option value="AWU - Anthro Weekend Utah"></option>
-                <option value="AC - Anthrocon"></option>
-                <option value="MFF - Midwest FurFest"></option>
-                <option value="FWA - Furry Weekend Atlanta"></option>
-                <option value="TFF - Texas Furry Fiesta"></option>
-                <option value="BLFC - Biggest Little Fur Con"></option>
-                <option value="ANE - Anthro New England"></option>
-                <option value="Megaplex"></option>
-                <option value="Furcationland"></option>
-                <option value="DenFur"></option>
-                <option value="Golden State Fur Con"></option>
-                <option value="Motor City Furry Con"></option>
-                <option value="Furry Migration"></option>
-                <option value="Anthro Northwest"></option>
-              </datalist>
             </label>
 
             <label>
@@ -160,8 +155,8 @@
           </label>
 
           <div class="checkbox-row">
-            <input type="checkbox" id="disclosure-check" required />
-            <label for="disclosure-check">
+            <input type="checkbox" id="booking-disclosure-check" required />
+            <label for="booking-disclosure-check">
               I read the booking disclosure and understand this is a request.
             </label>
           </div>
@@ -205,7 +200,7 @@
           <article class="price-card">
             <span class="package-icon">◎</span>
             <h3>Large Group</h3>
-            <p class="price">$150+</p>
+            <p class="price">$100</p>
             <p>
               This package focus on large group with more than 10 people in a area of your choice
               or based on my recommendation. Note, I be using my equipment unless you request to use
@@ -222,110 +217,100 @@
         </p>
       </section>
 
-      <section class="panel" id="gallery" data-tab-panel="gallery" aria-labelledby="gallery-title">
-        <div class="section-copy compact">
-          <h2 id="gallery-title">Example con photo moments</h2>
-        </div>
-
-        <div class="gallery-grid">
-          <button class="photo-tile tall" data-gallery="Neon hallway portrait">
-            <img
-              src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=80"
-              alt="Camera lens with colorful lighting"
-            />
-            <span>Neon hallway portrait</span>
-          </button>
-
-          <button class="photo-tile" data-gallery="Badge and maker details">
-            <img
-              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
-              alt="Convention style detail photo with camera gear"
-            />
-            <span>Badge and maker details</span>
-          </button>
-
-          <button class="photo-tile wide" data-gallery="Group photo coverage">
-            <img
-              src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1100&q=80"
-              alt="A lively group gathered in a bright event space"
-            />
-            <span>Group photo coverage</span>
-          </button>
-
-          <button class="photo-tile" data-gallery="Quiet lobby photos">
-            <img
-              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80"
-              alt="Event crowd with stage lighting"
-            />
-            <span>Quiet lobby photos</span>
-          </button>
-        </div>
-
-        <div class="furtrack-card">
-          <h3>Rocky’s Furtrack Photography</h3>
+      <section class="panel split" id="handler" data-tab-panel="handler" aria-labelledby="handler-title">
+        <div class="section-copy">
+          <h2 id="handler-title">Handler Request</h2>
           <p>
-            The live Furtrack photography page is connected here so visitors can find newer uploads
-            from Rocky’s Media.
+            Need help navigating the con, managing crowds, keeping track of space, or getting support
+            during your fursuit time? Fill this out and I’ll review the request.
           </p>
-          <a
-            class="button secondary"
-            href="https://www.furtrack.com/user/RockyTheDog/photography"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Open Furtrack photography
-          </a>
-        </div>
-      </section>
 
-      <section class="panel" id="photos" data-tab-panel="photos" aria-labelledby="photos-title">
-        <div class="section-copy compact">
-          <h2 id="photos-title">Photo Uploads</h2>
-          <p>
-            Photos added by Rocky’s Media can be viewed and expanded here.
-          </p>
+          <details class="disclosure" open>
+            <summary>
+              <span>Handler disclosure</span>
+              <span aria-hidden="true">⌄</span>
+            </summary>
+            <p>
+              Handler requests are not guaranteed until everything is communicated and confirmed.
+              Convention rules, accessibility needs, handler needs, and public-space safety always
+              come first.
+            </p>
+          </details>
         </div>
 
-        <div class="gallery-grid owner-gallery">
-          <button class="photo-tile wide" data-gallery="Rocky's Media feature image">
-            <svg class="fursona-card" viewBox="0 0 900 520" role="img" aria-label="Aussie shepherd fursona holding a camera">
-              <defs>
-                <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
-                  <stop offset="0" stop-color="#23312f" />
-                  <stop offset="1" stop-color="#0f1114" />
-                </linearGradient>
-                <linearGradient id="fur" x1="0" x2="1">
-                  <stop offset="0" stop-color="#f5f0e5" />
-                  <stop offset="0.48" stop-color="#9a7b61" />
-                  <stop offset="1" stop-color="#2c2c32" />
-                </linearGradient>
-              </defs>
-              <rect width="900" height="520" rx="26" fill="url(#sky)" />
-              <circle cx="735" cy="110" r="74" fill="#ffcf70" opacity=".92" />
-              <circle cx="174" cy="390" r="130" fill="#71f2cf" opacity=".16" />
-              <path d="M344 158c-66 20-110 80-110 157 0 101 82 183 183 183s183-82 183-183c0-76-47-142-113-168l-35 76-44-93-47 91-17-63z" fill="url(#fur)" />
-              <path d="M265 140l56 92 35-102c-34-18-63-19-91 10zM498 130l37 102 61-85c-32-34-65-36-98-17z" fill="#2a2c33" />
-              <ellipse cx="362" cy="285" rx="32" ry="38" fill="#fff8ee" />
-              <ellipse cx="469" cy="285" rx="32" ry="38" fill="#fff8ee" />
-              <circle cx="362" cy="289" r="15" fill="#2c5364" />
-              <circle cx="469" cy="289" r="15" fill="#2c5364" />
-              <path d="M405 322c20 14 42 14 61 0" fill="none" stroke="#2a1e1b" stroke-width="9" stroke-linecap="round" />
-              <path d="M414 305l25 19 25-19c-8 35-42 35-50 0z" fill="#2a1e1b" />
-              <rect x="510" y="300" width="190" height="122" rx="22" fill="#181b22" stroke="#f8f1e8" stroke-width="8" />
-              <circle cx="604" cy="362" r="42" fill="#0f1114" stroke="#71f2cf" stroke-width="12" />
-              <circle cx="604" cy="362" r="18" fill="#f7f1e8" opacity=".86" />
-              <rect x="545" y="270" width="72" height="42" rx="12" fill="#181b22" stroke="#f8f1e8" stroke-width="7" />
-              <path d="M520 372c-66 58-151 58-213 5" fill="none" stroke="#f5f0e5" stroke-width="24" stroke-linecap="round" />
-              <text x="450" y="82" fill="#fff8ee" font-size="42" font-family="Georgia, serif" text-anchor="middle" font-weight="700">Rocky’s Media</text>
-            </svg>
-            <span>Rocky's Media feature image</span>
+        <form class="booking-form" id="handler-form">
+          <div class="form-grid">
+            <label>
+              Name or handle
+              <input name="name" autocomplete="name" required placeholder="Your name / fursona" />
+            </label>
+
+            <label>
+              Preferred contact method
+              <select name="contactMethod" class="contact-method" required>
+                <option value="">Choose contact method</option>
+                <option>Email</option>
+                <option>Discord</option>
+                <option>Telegram</option>
+              </select>
+            </label>
+
+            <label>
+              Contact info
+              <input name="contact" class="contact-field" required placeholder="Choose a method first" />
+            </label>
+
+            <label>
+              Convention
+              <input
+                name="convention"
+                list="conventions"
+                required
+                placeholder="Example: AWU"
+              />
+            </label>
+
+            <label>
+              Preferred day
+              <select name="day" multiple required>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Handler details
+            <textarea
+              name="details"
+              required
+              placeholder="Tell me what help you need, where you expect to be, accessibility needs, suit limits, crowd concerns, and anything else important."
+            ></textarea>
+          </label>
+
+          <div class="checkbox-row">
+            <input type="checkbox" id="handler-disclosure-check" required />
+            <label for="handler-disclosure-check">
+              I understand this is a handler request and not a confirmed slot yet.
+            </label>
+          </div>
+
+          <button class="button primary submit" type="submit">
+            <span aria-hidden="true">➤</span>
+            Create handler request
           </button>
-        </div>
+
+          <output class="form-output" id="handler-output" aria-live="polite"></output>
+        </form>
       </section>
 
       <section class="panel" id="faq" data-tab-panel="faq" aria-labelledby="faq-title">
-        <div class="section-copy compact">
+        <div class="section-copy compact faq-heading">
           <h2 id="faq-title">FAQ</h2>
+          <p class="faq-subtitle">
+            You can find the common FAQ by clicking on the question and seeing the answer on the drop down
+          </p>
         </div>
 
         <div class="faq-list">
@@ -422,8 +407,55 @@
       </section>
     </main>
 
-    <button class="credits-trigger" id="credits-trigger" aria-label="Open website credits">
-      Credits
+    <datalist id="conventions">
+      <option value="It's Ruff Out 2026"></option>
+      <option value="Furry Weekend Atlanta 2026"></option>
+      <option value="AnthrOhio 2026"></option>
+      <option value="Furlandia 2026"></option>
+      <option value="Nashum FurCon 2026"></option>
+      <option value="Galactic Camp 2026"></option>
+      <option value="FurCamp Michigan 2026"></option>
+      <option value="Campfire Tails 2026"></option>
+      <option value="Texas Furry Siesta 2026"></option>
+      <option value="PortConMaine 2026"></option>
+      <option value="Anthrocon 2026"></option>
+      <option value="Big Sky Camp Paw 2026"></option>
+      <option value="Noctfurnal 2026"></option>
+      <option value="Eufuria 2026"></option>
+      <option value="AWU - Anthro Weekend Utah 2026"></option>
+      <option value="Furrydelphia 2026"></option>
+      <option value="Megaplex 2026"></option>
+      <option value="StratosFur 2026"></option>
+      <option value="DenFur 2026"></option>
+      <option value="FursonaCon 2026"></option>
+      <option value="IndyFurCon 2026"></option>
+      <option value="Mephit Fur Meet 2026"></option>
+      <option value="Tails and Tornadoes Fur Con 2026"></option>
+      <option value="Furry Migration 2026"></option>
+      <option value="Anthro SoCal 2026"></option>
+      <option value="Furever West 2026"></option>
+      <option value="Furrest City 2026"></option>
+      <option value="Furry Takeover 2026"></option>
+      <option value="Alamo City Furry Invasion 2026"></option>
+      <option value="Carolina Furfare 2026"></option>
+      <option value="Western PA Furry Weekend 2026"></option>
+      <option value="AquatiFur 2026"></option>
+      <option value="Heartland Howloween 2026"></option>
+      <option value="Gateway FurMeet 2026"></option>
+      <option value="Furry Cruise 2026"></option>
+      <option value="Furry Retreat 2026"></option>
+      <option value="Furpocalypse 2026"></option>
+      <option value="Wild Furloween West 2026"></option>
+      <option value="Painted Desert Fur Con 2027"></option>
+      <option value="Anthro New England 2027"></option>
+      <option value="FurSquared 2027"></option>
+      <option value="Capital Fur Con 2027"></option>
+      <option value="AnthroExpo 2027"></option>
+    </datalist>
+
+    <button class="paw-trigger" id="credits-trigger" aria-label="Open website credits">
+      <span>🐾</span>
+      <span>🐾</span>
     </button>
 
     <aside class="credits-panel" id="credits-panel" aria-label="Website credits">
