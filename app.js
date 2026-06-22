@@ -1,14 +1,14 @@
 const tabLinks = document.querySelectorAll("[data-tab-link]");
 const panels = document.querySelectorAll("[data-tab-panel]");
-const pawTrigger = document.querySelector("#paw-trigger");
-const pawPanel = document.querySelector("#paw-panel");
-const pawClose = document.querySelector("#paw-close");
 const bookingForm = document.querySelector("#booking-form");
 const formOutput = document.querySelector("#form-output");
 const lightbox = document.querySelector("#lightbox");
-const lightboxImage = lightbox?.querySelector("img");
+const lightboxMedia = lightbox?.querySelector(".lightbox-media");
 const lightboxCaption = lightbox?.querySelector("p");
 const lightboxClose = document.querySelector("#lightbox-close");
+const creditsTrigger = document.querySelector("#credits-trigger");
+const creditsPanel = document.querySelector("#credits-panel");
+const creditsClose = document.querySelector("#credits-close");
 
 function activateTab(name) {
   panels.forEach((panel) => {
@@ -28,6 +28,7 @@ tabLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     const target = link.dataset.tabLink;
     if (!target) return;
+
     event.preventDefault();
     activateTab(target);
   });
@@ -41,14 +42,17 @@ window.addEventListener("hashchange", () => {
 
 activateTab(location.hash.slice(1) || "home");
 
-pawTrigger?.addEventListener("click", () => {
-  const isOpen = pawPanel.classList.toggle("open");
-  pawTrigger.setAttribute("aria-label", isOpen ? "Close info panel" : "Open info panel");
+creditsTrigger?.addEventListener("click", () => {
+  const isOpen = creditsPanel.classList.toggle("open");
+  creditsTrigger.setAttribute(
+    "aria-label",
+    isOpen ? "Close website credits" : "Open website credits"
+  );
 });
 
-pawClose?.addEventListener("click", () => {
-  pawPanel.classList.remove("open");
-  pawTrigger.setAttribute("aria-label", "Open info panel");
+creditsClose?.addEventListener("click", () => {
+  creditsPanel.classList.remove("open");
+  creditsTrigger.setAttribute("aria-label", "Open website credits");
 });
 
 document.addEventListener("click", async (event) => {
@@ -56,14 +60,13 @@ document.addEventListener("click", async (event) => {
   if (!copyButton) return;
 
   const value = copyButton.dataset.copy;
+
   try {
     await navigator.clipboard.writeText(value);
-    copyButton.classList.add("copied");
-    const original = copyButton.getAttribute("aria-label") || copyButton.textContent.trim();
-    copyButton.setAttribute("aria-label", `Copied ${value}`);
+    const oldText = copyButton.innerHTML;
+    copyButton.innerHTML = `<span class="social-icon discord">✓</span> Copied`;
     setTimeout(() => {
-      copyButton.classList.remove("copied");
-      copyButton.setAttribute("aria-label", original);
+      copyButton.innerHTML = oldText;
     }, 1400);
   } catch {
     alert(value);
@@ -79,26 +82,50 @@ bookingForm?.addEventListener("submit", (event) => {
   }
 
   const data = new FormData(bookingForm);
+  const selectedDays = data.getAll("day").join(", ");
+
   const summary = [
-    "Booking request ready:",
+    "Thank for booking with Rocky’s Media! I be in contact in 24-48hrs with more info based on your preferred contact method! If you have any questions Feel free to shoot me a email at officialrockymedia@gmail.com",
+    "",
+    "Booking request:",
     `Name/handle: ${data.get("name")}`,
     `Contact: ${data.get("contact")}`,
     `Convention: ${data.get("convention")}`,
-    `Date/time: ${data.get("date")} at ${data.get("time")}`,
+    `Preferred day: ${selectedDays}`,
+    `Preferred time: ${data.get("time")}`,
     `Package: ${data.get("package")}`,
     `Details: ${data.get("details")}`,
   ].join("\n");
 
-  formOutput.textContent = summary;
+  formOutput.innerHTML = summary
+    .replace(
+      "officialrockymedia@gmail.com",
+      '<a href="mailto:officialrockymedia@gmail.com" target="_blank" rel="noreferrer"><em>officialrockymedia@gmail.com</em></a>'
+    )
+    .replace(/\n/g, "<br>");
+
   formOutput.classList.add("show");
 });
 
 document.querySelectorAll(".photo-tile").forEach((tile) => {
   tile.addEventListener("click", () => {
     const image = tile.querySelector("img");
-    lightboxImage.src = image.src;
-    lightboxImage.alt = image.alt;
-    lightboxCaption.textContent = tile.dataset.gallery;
+    const svg = tile.querySelector("svg");
+
+    lightboxMedia.innerHTML = "";
+
+    if (image) {
+      const enlargedImage = document.createElement("img");
+      enlargedImage.src = image.src;
+      enlargedImage.alt = image.alt;
+      lightboxMedia.appendChild(enlargedImage);
+    }
+
+    if (svg) {
+      lightboxMedia.appendChild(svg.cloneNode(true));
+    }
+
+    lightboxCaption.textContent = tile.dataset.gallery || "Photo preview";
 
     if (typeof lightbox.showModal === "function") {
       lightbox.showModal();
@@ -107,10 +134,9 @@ document.querySelectorAll(".photo-tile").forEach((tile) => {
 });
 
 lightboxClose?.addEventListener("click", () => lightbox.close());
-lightbox?.addEventListener("click", (event) => {
-  if (event.target === lightbox) lightbox.close();
-});
 
-if (window.lucide) {
-  window.lucide.createIcons();
-}
+lightbox?.addEventListener("click", (event) => {
+  if (event.target === lightbox) {
+    lightbox.close();
+  }
+});
