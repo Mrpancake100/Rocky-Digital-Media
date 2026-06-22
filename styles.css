@@ -339,14 +339,19 @@ select {
   min-height: 46px;
   border: 1px solid rgba(255, 249, 240, 0.2);
   border-radius: 8px;
-  padding: 12px;
+  padding: 10px;
   color: var(--ink);
   background: rgba(0, 0, 0, 0.28);
   outline: none;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
 }
 
 select[multiple] {
   min-height: 106px;
+  color: var(--ink);
+  background: rgba(0, 0, 0, 0.42);
 }
 
 textarea {
@@ -362,7 +367,8 @@ select:focus {
 }
 
 select option {
-  color: var(--black);
+  color: var(--ink);
+  background: #12100f;
 }
 
 .checkbox-row {
@@ -555,9 +561,23 @@ select option {
   line-height: 1.65;
 }
 
-.faq-list a {
-  color: var(--mint);
-  text-decoration: underline;
+#faq .section-copy,
+.faq-heading {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#faq-title,
+.faq-subtitle {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq-subtitle {
+  max-width: 720px;
+  color: var(--muted);
 }
 
 .social-board {
