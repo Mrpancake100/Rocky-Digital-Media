@@ -111,7 +111,34 @@ bookingForm.innerHTML = `
   </div>
 `;
 });
+handlerForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
+  if (!handlerForm.checkValidity()) {
+    handlerForm.reportValidity();
+    return;
+  }
+
+  const data = new FormData(handlerForm);
+
+  await fetch(handlerForm.action, {
+    method: "POST",
+    body: data,
+    headers: { Accept: "application/json" },
+  });
+
+  handlerForm.dataset.submitted = "true";
+
+  handlerForm.innerHTML = `
+    <div class="form-output show">
+    Thank you for submitting a handler request with Rocky's Media!
+      <br><br>
+      If you have any questions, feel free to email me at
+      <a href="mailto:officialrockymedia@gmail.com"><em>officialrockymedia@gmail.com</em></a>.
+      <br><br>
+    </div>
+  `;
+});
 document.querySelectorAll(".photo-tile").forEach((tile) => {
   tile.addEventListener("click", () => {
     const image = tile.querySelector("img");
