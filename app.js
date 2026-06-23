@@ -83,20 +83,6 @@ document.addEventListener("click", async (event) => {
     alert(value);
   }
 });
-const originalBookingForm = bookingForm?.innerHTML;
-const originalHandlerForm = handlerForm?.innerHTML;
-
-function resetSubmittedForms() {
-  if (bookingForm?.dataset.submitted === "true" && originalBookingForm) {
-    bookingForm.innerHTML = originalBookingForm;
-    bookingForm.dataset.submitted = "false";
-  }
-
-  if (handlerForm?.dataset.submitted === "true" && originalHandlerForm) {
-    handlerForm.innerHTML = originalHandlerForm;
-    handlerForm.dataset.submitted = "false";
-  }
-}
 
 bookingForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -159,5 +145,3 @@ lightbox?.addEventListener("click", (event) => {
     lightbox.close();
   }
 });
-
-window.addEventListener("focus", resetSubmittedForms);
