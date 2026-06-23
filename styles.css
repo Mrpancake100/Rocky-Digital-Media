@@ -861,3 +861,30 @@ select option {
   background: transparent;
   opacity: 0.72;
 }
+
+.social-board {
+  background: rgba(18, 16, 15, 0.32);
+}
+
+.social-board a,
+.social-board button {
+  background: rgba(255, 249, 240, 0.08);
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgba(255, 249, 240, 0.12) !important;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 950;
+}
+
+.paw-trigger {
+  left: auto;
+  right: 18px;
+  bottom: 18px;
+  background: transparent;
+  opacity: 0.72;
+}
