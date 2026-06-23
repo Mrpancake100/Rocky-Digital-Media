@@ -29,8 +29,9 @@ tabLinks.forEach((link) => {
     const target = link.dataset.tabLink;
     if (!target) return;
 
-    event.preventDefault();
-    activateTab(target);
+   event.preventDefault();
+resetSubmittedForms();
+activateTab(target);
   });
 });
 
@@ -72,6 +73,20 @@ document.addEventListener("click", async (event) => {
     alert(value);
   }
 });
+const originalBookingForm = bookingForm?.innerHTML;
+const originalHandlerForm = handlerForm?.innerHTML;
+
+function resetSubmittedForms() {
+  if (bookingForm?.dataset.submitted === "true" && originalBookingForm) {
+    bookingForm.innerHTML = originalBookingForm;
+    bookingForm.dataset.submitted = "false";
+  }
+
+  if (handlerForm?.dataset.submitted === "true" && originalHandlerForm) {
+    handlerForm.innerHTML = originalHandlerForm;
+    handlerForm.dataset.submitted = "false";
+  }
+}
 
 bookingForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -88,7 +103,8 @@ bookingForm?.addEventListener("submit", async (event) => {
     body: data,
     headers: { Accept: "application/json" },
   });
-
+bookingForm.dataset.submitted = "true";
+  
 bookingForm.innerHTML = `
   <div class="form-output show">
     Thank you for booking with Rocky's Media! I'll be in contact within 24-48 hours with more information based on your preferred contact method.
@@ -133,3 +149,5 @@ lightbox?.addEventListener("click", (event) => {
     lightbox.close();
   }
 });
+
+window.addEventListener("focus", resetSubmittedForms);
