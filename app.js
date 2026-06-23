@@ -96,7 +96,6 @@ bookingForm.innerHTML = `
     If you have any questions, feel free to email me at
     <a href="mailto:officialrockymedia@gmail.com"><em>officialrockymedia@gmail.com</em></a>.
     <br><br>
-    <span class="form-note">To submit a new request, refresh the page or click another tab.</span>
   </div>
 `;
 });
