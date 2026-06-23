@@ -808,3 +808,24 @@ select option {
     min-height: 240px;
   }
 }
+
+.price-card.featured {
+  background: rgba(18, 16, 15, 0.58);
+}
+
+.price {
+  color: var(--ink) !important;
+  font-weight: 950;
+}
+
+.pricing-disclaimer {
+  border: 0 !important;
+  background: transparent !important;
+  color: rgba(255, 249, 240, 0.72);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+#home-title {
+  font-family: "Courier New", Courier, monospace;
+}
