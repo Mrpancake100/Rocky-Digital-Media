@@ -389,15 +389,22 @@ select option {
   justify-self: start;
 }
 
-.form-output {
-  display: none;
-  border: 1px solid rgba(111, 244, 207, 0.45);
-  border-radius: 8px;
-  padding: 14px;
+.form-output.show {
+  display: block;
+  border: 1px solid rgba(255, 249, 240, 0.24);
+  background: rgba(18, 16, 15, 0.68);
   color: var(--ink);
-  background: rgba(111, 244, 207, 0.12);
-  white-space: pre-wrap;
-  line-height: 1.5;
+  box-shadow: var(--shadow);
+}
+
+.form-output.show a {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.form-output.show .form-note {
+  color: rgba(255, 249, 240, 0.72);
+  font-size: 0.92rem;
 }
 
 .form-output.show {
