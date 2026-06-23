@@ -73,8 +73,8 @@ document.addEventListener("click", async (event) => {
   }
 });
 
-bookingForm?.addEventListener("submit", (event) => {
-  // event.preventDefault();
+bookingForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
   if (!bookingForm.checkValidity()) {
     bookingForm.reportValidity();
@@ -82,29 +82,23 @@ bookingForm?.addEventListener("submit", (event) => {
   }
 
   const data = new FormData(bookingForm);
- const selectedDays = data.get("day");
 
-  const summary = [
-    "Thank for booking with Rocky’s Media! I be in contact in 24-48hrs with more info based on your preferred contact method! If you have any questions Feel free to shoot me a email at officialrockymedia@gmail.com",
-    "",
-    "Booking request:",
-    `Name/handle: ${data.get("name")}`,
-    `Contact: ${data.get("contact")}`,
-    `Convention: ${data.get("convention")}`,
-    `Preferred day: ${selectedDays}`,
-    `Preferred time: ${data.get("time")}`,
-    `Package: ${data.get("package")}`,
-    `Details: ${data.get("details")}`,
-  ].join("\n");
+  await fetch(bookingForm.action, {
+    method: "POST",
+    body: data,
+    headers: { Accept: "application/json" },
+  });
 
-  formOutput.innerHTML = summary
-    .replace(
-      "officialrockymedia@gmail.com",
-      '<a href="mailto:officialrockymedia@gmail.com" target="_blank" rel="noreferrer"><em>officialrockymedia@gmail.com</em></a>'
-    )
-    .replace(/\n/g, "<br>");
-
-  formOutput.classList.add("show");
+  bookingForm.innerHTML = `
+    <div class="form-output show">
+      Thank for booking with Rocky’s Media! I be in contact in 24-48hrs with more info based on your preferred contact method!
+      <br><br>
+      If you have any questions Feel free to shoot me a email at
+      <a href="mailto:officialrockymedia@gmail.com"><em>officialrockymedia@gmail.com</em></a>.
+      <br><br>
+      To submit a new request, please refresh the page.
+    </div>
+  `;
 });
 
 document.querySelectorAll(".photo-tile").forEach((tile) => {
