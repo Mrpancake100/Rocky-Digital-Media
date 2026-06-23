@@ -888,3 +888,16 @@ select option {
   background: transparent;
   opacity: 0.72;
 }
+
+.paw-trigger {
+  left: auto !important;
+  right: 18px !important;
+  bottom: 18px !important;
+  background: transparent !important;
+  color: white !important;
+  opacity: 0.9;
+}
+
+.paw-trigger span {
+  filter: brightness(0) invert(1);
+}
