@@ -116,8 +116,5 @@ bookingForm?.addEventListener("submit", async (event) => {
 
 handlerForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
-  await submitForm(
-    handlerForm,
-    "Thank you for submitting a handler request with Rocky's Media!"
-  );
+  await submitForm(handlerForm, "Thank you for submitting a handler request with Rocky's Media!");
 });
